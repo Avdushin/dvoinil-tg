@@ -22,6 +22,7 @@ user_states = {}
 @bot.message_handler(commands=['start'])
 def start(message):
     set_commands_to_start()
+    show_menu()
     bot.reply_to(message, "Привет! Напиши /help, чтобы узнать, что я умею.")
 
 def show_menu(message):
