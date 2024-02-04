@@ -12,4 +12,5 @@ if API_TOKEN is None:
     API_TOKEN = os.environ.get('API_TOKEN')
 
 if API_TOKEN is None:
-    raise ValueError("API_TOKEN is not set. Create a .env file or set it as an environment variable.")
+    # For test production
+    API_TOKEN = "6911174045:AAE3j4qZJGtgx1PIahWaOvW07e8S9rDQG_c"
