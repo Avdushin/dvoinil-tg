@@ -15,17 +15,7 @@ def set_commands_to_start():
     telebot.types.BotCommand("/compare", "Сравнить данные из таблицы")
     ])
 
-# Словарь для отслеживания состояний пользователей
-user_states = {}
-
-# /start
-@bot.message_handler(commands=['start'])
-def start(message):
-    set_commands_to_start()
-    show_menu()
-    bot.reply_to(message, "Привет! Напиши /help, чтобы узнать, что я умею.")
-
-def show_menu(message):
+def show_menu():
     user_id = message.from_user.id
 
     # Создаем клавиатуру
@@ -38,6 +28,17 @@ def show_menu(message):
 
     # Отправляем клавиатуру пользователю
     bot.send_message(user_id, "Выберите действие:", reply_markup=markup)
+
+
+# Словарь для отслеживания состояний пользователей
+user_states = {}
+
+# /start
+@bot.message_handler(commands=['start'])
+def start(message):
+    set_commands_to_start()
+    show_menu()
+    bot.reply_to(message, "Привет! Напиши /help, чтобы узнать, что я умею.")
 
 # /help
 @bot.message_handler(commands=['help'])
