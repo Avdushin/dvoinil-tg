@@ -24,6 +24,20 @@ def start(message):
     set_commands_to_start()
     bot.reply_to(message, "Привет! Напиши /help, чтобы узнать, что я умею.")
 
+def show_menu(message):
+    user_id = message.from_user.id
+
+    # Создаем клавиатуру
+    markup = types.ReplyKeyboardMarkup(row_width=2)
+    item_compare = types.KeyboardButton('Сравнить данные')
+    item_help = types.KeyboardButton('Помощь')
+    
+    # Добавляем кнопки на клавиатуру
+    markup.add(item_compare, item_help)
+
+    # Отправляем клавиатуру пользователю
+    bot.send_message(user_id, "Выберите действие:", reply_markup=markup)
+
 # /help
 @bot.message_handler(commands=['help'])
 @bot.message_handler(func=lambda message: "Помощь" in message.text)
@@ -41,20 +55,7 @@ P.s
 """, parse_mode='markdown')
 
 # Добавляем обработчик для команды /menu
-@bot.message_handler(commands=['menu'])
-def show_menu(message):
-    user_id = message.from_user.id
-
-    # Создаем клавиатуру
-    markup = types.ReplyKeyboardMarkup(row_width=2)
-    item_compare = types.KeyboardButton('Сравнить данные')
-    item_help = types.KeyboardButton('Помощь')
-    
-    # Добавляем кнопки на клавиатуру
-    markup.add(item_compare, item_help)
-
-    # Отправляем клавиатуру пользователю
-    bot.send_message(user_id, "Выберите действие:", reply_markup=markup)
+# @bot.message_handler(commands=['menu'])
 
 # Отправка файла
 @bot.message_handler(content_types=['document'])
