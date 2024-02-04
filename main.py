@@ -7,9 +7,6 @@ import config
 
 bot = telebot.TeleBot(config.API_TOKEN)
 
-# engine = create_engine('sqlite:///products.db')
-# Session = sessionmaker(bind=engine)
-
 # Команды бота
 def set_commands_to_start():
     bot.set_my_commands([
@@ -58,7 +55,6 @@ def show_menu(message):
 
     # Отправляем клавиатуру пользователю
     bot.send_message(user_id, "Выберите действие:", reply_markup=markup)
-
 
 # Отправка файла
 @bot.message_handler(content_types=['document'])
@@ -116,8 +112,6 @@ def compare_data(message):
             result_message += "\n".join(f" - {', '.join(map(str, product))}" for product in existing_products)
         else:
             result_message = "Файл не содержит товаров."
-
-
 
         bot.send_message(user_id, result_message)
 
