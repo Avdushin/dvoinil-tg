@@ -3,7 +3,7 @@ name: Run Bot
 on:
   push:
     branches:
-      - main
+      - prod
 
 jobs:
   your_job_name:
