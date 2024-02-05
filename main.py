@@ -28,11 +28,13 @@ def show_menu(message):
     # Добавляем кнопки на клавиатуру
     markup.add(item_compare, item_help)
 
+    return markup
+
 # /start
 @bot.message_handler(commands=['start'])
 def start(message):
     set_commands_to_start()
-    show_menu(message)
+    markup = show_menu(message)
 
     bot.reply_to(message, "Привет! Напиши /help, чтобы узнать, что я умею.", reply_markup=markup)
 
